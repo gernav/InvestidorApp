@@ -1,22 +1,27 @@
 <?php
 
-namespace App;
+namespace App\Entities;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+ 
 
-class User extends Authenticatable
+class UserSocial extends Model
 {
+    use SoftDeletes;
     use Notifiable;
 
+    public $timestamps = true;
+
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'cpf','name', 'phone', 'birth', 'gender', 'notes', 'email', 'password', 'status', 'permission',
     ];
 
     /**
@@ -35,5 +40,5 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ];
+    ]; 
 }
