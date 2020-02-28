@@ -10,4 +10,21 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function homepage(){
+        $variavel = "Home - InvestApp";
+
+        return view('welcome', [
+            'title' => $variavel
+        ]);
+
+    }
+
+    public function cadastrar(){
+        echo 'pagina de cadastro';
+    }
+
+    public function fazerLogin(){
+        echo 'pagina de login';
+    }
 }
