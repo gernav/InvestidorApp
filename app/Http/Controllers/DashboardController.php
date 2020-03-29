@@ -33,9 +33,9 @@ class DashboardController extends Controller
 
         try
         {
-            Auth::attempt($data, false);            
+            \Auth::attempt($data, false);            
             return redirect()->route('user.dashboard');
-        }catch (Exception $e)
+        }catch (\Exception $e)
         {
             return $e->getMessage();
         }

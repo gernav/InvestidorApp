@@ -14,7 +14,7 @@
 
         <h1>Investindo</h1>
         <h3>O nosso gerenciador de investimentos</h3>
-
+        
         {!! Form::open(['route'=> 'user.login', 'method'=> 'post']) !!}
 
             <p>Acesse o sistema</p>
