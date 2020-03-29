@@ -7,6 +7,9 @@
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="background"></div>
+    
     <section id="conteudo-view" class="login">
 
         <h1>Investindo</h1>
