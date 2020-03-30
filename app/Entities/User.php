@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_id', 'social_network', 'social_id', 'social_email', 'social_avatar',
+        'cpf','name', 'phone', 'birth', 'gender', 'notes', 'email', 'password', 'status', 'permission',
     ];
 
     /**
@@ -29,7 +29,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden = ['password', 'remember_token'];
+
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($valuess) : $value;   
+    }
 
     /**
      * The attributes that should be cast to native types.
