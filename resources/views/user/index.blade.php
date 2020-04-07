@@ -5,8 +5,12 @@
 @endsection
 
 @section('conteudo-view')
+
+    @if(session('success'))
+        <h3>{{ session('success')['messages'] }}</h3>
+    @endif
     
-    {!! Form::open(['method' => 'post', 'class' => 'form-padrao']) !!}
+    {!! Form::open(['route' => 'user.store', 'method' => 'post', 'class' => 'form-padrao']) !!}
         @include('templates.formularios.input', ['label' => 'CPF', 'input' => 'cpf', 'attributes' => ['placeholder' => 'CPF']])
         @include('templates.formularios.input', ['input' => 'name', 'attributes' => ['placeholder' => 'Nome']])
         @include('templates.formularios.input', ['input' => 'phone', 'attributes' => ['placeholder' => 'Telefone']])

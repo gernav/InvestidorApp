@@ -32,30 +32,29 @@ class DashboardController extends Controller
             'email'    => $request->get('username'),
             'password' => $request->get('password')
         ];
-
+        
         try
         {
+            if(env('PASSWORD_HASH'))
+            {
+                Auth::attempt($data, false);
 
-            if(env('PASSWORD_HASH')) {
-                Auth::attempt($data, false);            
-
-            }else {
-                $user = $this->repository->findWhere(['email'=>$request->get('username')])->first();
-                $user = $this->repository->findWhere(['email'=>$request->get('username')])->first();
-
-
+            }
+            else
+            {
+                $user = $this->repository->findWhere(['email' => $request->get('username')])->first();
                 if(!$user)
-                    throw new Exception("E-mail informado é inválido");
+                    throw new Exception("O email informado está incorreto");
 
-                
-                if($user->password != $request->get(password));
-                    throw new Exception("Senha inválida");
+                if($user->password != $request->get('password'))
+                    throw new Exception("A senha informada está incorreta");
 
                 Auth::login($user);
             }
-            
+
             return redirect()->route('user.dashboard');
-        }catch (\Exception $e)
+        }
+        catch(Exception $e)
         {
             return $e->getMessage();
         }
